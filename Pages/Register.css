@@ -1,0 +1,128 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Manrope", serif;
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    background-color: #b4e197;
+}
+
+.container {
+    font-family: "Manrope", serif;
+    display: flex;
+    width: 70%;
+    max-width: 1200px;
+    background-color: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.left-panel {
+    background-color: #b4e197;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 40px;
+}
+
+.left-panel h1 {
+    color: #333;
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.left-panel p {
+    color: #555;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.right-panel {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.right-panel h2 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.btn {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    color: white;
+    background-color: #68a05a;
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+
+.btn:hover {
+    background-color: #5c8f4f;
+}
+
+.google-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ddd;
+    background-color: white;
+    color: #555;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.google-btn img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.google-btn:hover {
+    background-color: #f7f7f7;
+}
+
+.login-link {
+    text-align: center;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.login-link a {
+    color: #68a05a;
+    text-decoration: none;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+}
