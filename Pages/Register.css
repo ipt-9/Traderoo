@@ -6,14 +6,22 @@ body {
     height: 100vh;
     align-items: center;
     justify-content: center;
-    background-color: #b4e197;
+    background-color:  #a0d87b;
 }
-
+.Pagetitle{
+    position:absolute; 
+    top: 20px; 
+    left: 20px; 
+    font-size: 65px;
+    font-weight: bold;
+    padding-left: 30px;
+}
 .container {
     font-family: "Manrope", serif;
     display: flex;
-    width: 70%;
-    max-width: 1200px;
+    width: 75%;
+    max-width: 100%;
+    height: 55%;
     background-color: white;
     border-radius: 15px;
     overflow: hidden;
@@ -21,7 +29,7 @@ body {
 }
 
 .left-panel {
-    background-color: #b4e197;
+    background-image: linear-gradient(180deg, #bae5ba, #40af40);
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -31,13 +39,13 @@ body {
 
 .left-panel h1 {
     color: #333;
-    font-size: 36px;
+    font-size: 50px;
     margin-bottom: 10px;
 }
 
 .left-panel p {
     color: #555;
-    font-size: 16px;
+    font-size: 25px;
     line-height: 1.6;
 }
 
@@ -51,7 +59,7 @@ body {
 
 .right-panel h2 {
     color: #333;
-    font-size: 24px;
+    font-size: 40px;
     margin-bottom: 20px;
     text-align: center;
 }
@@ -62,7 +70,7 @@ body {
 
 .form-group label {
     display: block;
-    font-size: 14px;
+    font-size: 25px;
     margin-bottom: 5px;
     color: #333;
 }
@@ -72,7 +80,7 @@ body {
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 8px;
-    font-size: 14px;
+    font-size: 17px;
 }
 
 .btn {
@@ -80,7 +88,7 @@ body {
     padding: 10px;
     border: none;
     border-radius: 8px;
-    font-size: 16px;
+    font-size: 20px;
     color: white;
     background-color: #68a05a;
     cursor: pointer;
@@ -114,7 +122,7 @@ body {
 
 .login-link {
     text-align: center;
-    font-size: 14px;
+    font-size: 17px;
     margin-top: 10px;
 }
 
