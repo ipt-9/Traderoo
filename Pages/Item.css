@@ -1,0 +1,145 @@
+body {
+    font-family: "Manrope", sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 20px;
+}
+.heading{
+    font-family: "Manrope", serif;
+    color: black; 
+    
+    font-size: 35px;
+     
+    }
+.col{
+flex: 0 0 33%; 
+margin-bottom: 3%;
+margin-right: 50px;
+}
+ul{
+ display:flex; 
+ flex-wrap: wrap;     
+ flex-direction: column; 
+margin-left: auto;
+margin-right: auto;
+margin-top:10%; 
+}
+li{
+flex: 0 0 20%;
+display: inline;
+}
+.IteImg{
+    font-family: "Manrope", serif;
+    color: black;
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1600px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10%;
+    justify-content: center;
+    margin-top: 150px;
+}
+.table {
+    max-width: 105%;
+    height: auto;
+}
+.table-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+}
+.profile-card {
+    background-color: #A1D88B;
+    padding: 15px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.profile-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+.profile-name {
+    font-weight: bold;
+}
+.rating {
+    margin-left: auto;
+}
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+.btn {
+    flex: 1;
+    background: white;
+    border: none;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.description {
+    margin-top: 20px;
+    font-size: 14px;
+}
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+}
+.tag {
+    background: #A1D88B;
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: bold;
+}
+.product-info {
+    background: #A1D88B;
+    padding: 15px;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-top: 15px;
+    font-weight: bold;
+}
+.match-button {
+    background: #90D270;
+    padding: 15px;
+    border-radius: 25px;
+    text-align: center;
+    margin-top: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.footer {
+    background-color: #A1D88B;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    color: #1F1F1F;
+}
+.footer div {
+    flex: 1;
+    min-width: 200px;
+    margin: 10px;
+}
+.footer h3 {
+    font-size: 16px;
+    font-weight: bold;
+}
+.footer p, .footer a {
+    color: #333;
+    text-decoration: none;
+    margin: 5px 0;
+    display: block;
+}
