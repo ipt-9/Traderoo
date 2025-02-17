@@ -143,3 +143,34 @@ display: inline;
     margin: 5px 0;
     display: block;
 }
+.card-container {
+    display: flex;
+    gap: 25px;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+.card {
+    background: #9bcc7b;
+    border-radius: 10px;
+    width: 200px;
+    padding: 17px;
+    text-align: center;
+}
+.card img {
+    width: 100%;
+    border-radius: 5px;
+}
+.match-button {
+    background: #A0E060;
+    border: none;
+    padding: 11px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.card h4{
+    font-size: 22px;
+    color: white;
+}
+.card p{
+    color: #484646;
+}
