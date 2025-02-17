@@ -1,0 +1,98 @@
+body {
+    font-family: "Manrope", sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+.container label{
+    color:white; 
+}
+.trade-info {
+    background: #9BD976;
+    padding: 20px;
+    border-radius: 10px;
+    width: 48%;
+    margin-bottom: 40px; ;
+}
+.input-group {
+    margin-bottom: 10px;
+}
+.input-group input{
+    width: 96%; 
+}
+.input-group textarea{
+    width: 96%; 
+}
+input, textarea, select {
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+.measurements {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+.measurements input {
+    width: calc(50% - 5px);
+}
+
+.button {
+    background: #B0F484;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+    color:white; 
+}
+.UploadImg{
+    margin-left: 40px;
+}
+.image-upload {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+.image-box {
+    background: #888;
+    width: 150px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+}
+
+
+.footer {
+    background-color: #A1D88B;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    color: #1F1F1F;
+}
+.footer div {
+    flex: 1;
+    min-width: 200px;
+    margin: 10px;
+}
+.footer h3 {
+    font-size: 16px;
+    font-weight: bold;
+}
+.footer p, .footer a {
+    color: #333;
+    text-decoration: none;
+    margin: 5px 0;
+    display: block;
+}
