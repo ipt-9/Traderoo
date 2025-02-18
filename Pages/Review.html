@@ -1,26 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home</title>
-  <style>
-    a:hover {
-      color: black; /* Hover-Effekt */
-      font-weight: bold; /* Fettgedruckt bei Hover */
-    }
-  </style>
-</head>
-<body>
-  <!-- Navigation -->
-  <nav class="NavBar" style="text-align: center; padding: 10px; background-color: #fff; box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);">
-    <a class="NavPages" href="Home.html"> Traderoo</a>
-    <a class="NavPages" href="Home.html" >Home</a>
-    <a class="NavPages"href="Swipe.html" >Swipe</a>
-    <a class="NavPages"href="AllTrades.html" >All Trades</a>
-    <a class="NavPages"href="Create.html" >Create Trade</a>
-    <a class="NavPages"href="AboutUs.html" >About us</a>
-    <a class="NavPages"href="YourProfile.html"><i class="fa-solid fa-user"></i></a>
-  </nav>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap"
+      rel="stylesheet"
+    />
+    <link href="Review.css" rel="stylesheet" />
+    <script
+      src="https://kit.fontawesome.com/d782156bec.js"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      a:hover {
+        color: black; /* Hover-Effekt */
+        font-weight: bold; /* Fettgedruckt bei Hover */
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav
+      class="NavBar"
+      style="
+        text-align: center;
+        padding: 10px;
+        background-color: #fff;
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+      "
+    >
+      <a class="NavPages" href="Home.html"> Traderoo</a>
+      <a class="NavPages" href="Home.html">Home</a>
+      <a class="NavPages" href="Swipe.html">Swipe</a>
+      <a class="NavPages" href="AllTrades.html">All Trades</a>
+      <a class="NavPages" href="Create.html">Create Trade</a>
+      <a class="NavPages" href="AboutUs.html">About us</a>
+      <a class="NavPages" href="YourProfile.html"
+        ><i class="fa-solid fa-user"></i
+      ></a>
+    </nav>
+    <div class="Review">
+      <center>
+        <p class="heading"><strong>Create Review</strong></p>
+        <p class="subtitle">
+          Share your experience and help others make great trades!
+        </p>
+      </center>
+      <div class="review-card">
+        <div class="user-info">
+          <span class="username">Markus Rieder</span>
+          <button class="btn black">View Trades</button>
+          <button class="btn black">Go to Chat</button>
+        </div>
+
+        <div class="trade-info">
+          <h3>Traded Item</h3>
+          <div class="item">
+            <span class="item-name">Nightstand</span>
+          </div>
+        </div>
+
+        <div class="review-section">
+          <h3>Review</h3>
+          <textarea
+            placeholder="Write a short description with key details about your trade experience..."
+          ></textarea>
+        </div>
+
+        <div class="rating-section">
+          <h3>Rating</h3>
+          <div class="stars">
+            <span>⭐</span>
+            <span>⭐</span>
+            <span>⭐</span>
+            <span>⭐</span>
+            <span>⭐</span>
+          </div>
+        </div>
+
+        <button class="create-review-btn">✅ Create Review</button>
+      </div>
+    </div>
+  </body>
+  <footer>
+    <div class="footer">
+      <div>
+        <h3>TRADEROO</h3>
+        <p>We help you find your dream trade</p>
+        <p><strong>Adress</strong><br />Lucerne 6002, Switzerland</p>
+        <p><strong>Contact</strong><br />teamtraderoo@gmail.com</p>
+        <p>Legal status: Sole proprietorship</p>
+      </div>
+      <div>
+        <h3>Information</h3>
+        <a href="#">About</a>
+        <a href="#">Product</a>
+        <a href="#">Blog</a>
+      </div>
+      <div>
+        <h3>Company</h3>
+        <a href="#">Team</a>
+        <a href="#">Out Idea</a>
+        <a href="#">Our story</a>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <a href="#">Feedback</a>
+        <a href="#">Pricing</a>
+        <a href="#">Resources</a>
+      </div>
+    </div>
+  </footer>
 </html>
