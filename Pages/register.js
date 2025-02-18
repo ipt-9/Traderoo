@@ -1,28 +1,52 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const registerButton = document.getElementById("registerButton");
+    const registerForm = document.querySelector("form");
+    const messageBox = document.getElementById("message");
 
-    registerButton.addEventListener("click", async function () {
-        const username = document.getElementById("username").value;
-        const email = document.getElementById("email").value;
-        const password = document.getElementById("password").value;
+    registerForm.addEventListener("submit", function (event) {
+        event.preventDefault(); // Verhindert das Neuladen der Seite
 
+        // Eingabewerte abrufen
+        const username = document.getElementById("Username").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value.trim();
+
+        // Überprüfung der Eingaben
         if (!username || !email || !password) {
-            document.getElementById("message").innerText = "Bitte fülle alle Felder aus!";
+            showMessage("Bitte fülle alle Felder aus!", "error");
             return;
         }
 
-        const response = await fetch("http://localhost/traderoo_project/backend/register.php", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ username, email, password }),
-        });
-
-        const data = await response.json();
-
-        if (data.message) {
-            document.getElementById("message").innerText = "Registrierung erfolgreich!";
-        } else {
-            document.getElementById("message").innerText = data.error;
+        if (!validateEmail(email)) {
+            showMessage("Bitte gib eine gültige E-Mail-Adresse ein!", "error");
+            return;
         }
+
+        if (password.length < 6) {
+            showMessage("Das Passwort muss mindestens 6 Zeichen lang sein!", "error");
+            return;
+        }
+
+        // Temporäre Speicherung im Local Storage (später mit Datenbank ersetzen)
+        const user = { username, email, password };
+        localStorage.setItem("registeredUser", JSON.stringify(user));
+
+        showMessage("Registrierung erfolgreich! Du wirst weitergeleitet...", "success");
+
+        // Nach 2 Sekunden zur Login-Seite weiterleiten
+        setTimeout(() => {
+            window.location.href = "index.html";
+        }, 2000);
     });
+
+    // Funktion zur E-Mail-Validierung
+    function validateEmail(email) {
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailPattern.test(email);
+    }
+
+    // Funktion zur Anzeige von Nachrichten
+    function showMessage(text, type) {
+        messageBox.textContent = text;
+        messageBox.style.color = type === "error" ? "red" : "green";
+    }
 });
