@@ -1,24 +1,241 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home</title>
-  <style>
-    a:hover {
-      color: black; /* Hover-Effekt */
-      font-weight: bold; /* Fettgedruckt bei Hover */
-    }
-  </style>
-</head>
-<body>
-  <!-- Navigation -->
-  <nav style="text-align: center; padding: 10px; background-color: #fff; box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);">
-    <a href="Home.html" style="margin: 0 15px; color: gray; text-decoration: none; font-size: 16px;">Home</a>
-    <a href="Swipe.html" style="margin: 0 15px; color: gray; text-decoration: none; font-size: 16px;">Swipe</a>
-    <a href="AllTrades.html" style="margin: 0 15px; color: gray; text-decoration: none; font-size: 16px;">All Trades</a>
-    <a href="Create.html" style="margin: 0 15px; color: gray; text-decoration: none; font-size: 16px;">Create Trade</a>
-    <a href="AboutUs.html" style="margin: 0 15px; color: gray; text-decoration: none; font-size: 16px;">About us</a>
-  </nav>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap"
+      rel="stylesheet"
+    />
+    <link href="AllTrades.css" rel="stylesheet" />
+    <style>
+      a:hover {
+        color: black; /* Hover-Effekt */
+        font-weight: bold; /* Fettgedruckt bei Hover */
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav
+      class="NavBar"
+      style="
+        text-align: center;
+        padding: 10px;
+        background-color: #fff;
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+      "
+    >
+      <a class="NavPages" href="Home.html"> Traderoo</a>
+      <a class="NavPages" href="Home.html">Home</a>
+      <a class="NavPages" href="Swipe.html">Swipe</a>
+      <a class="NavPages" href="AllTrades.html">All Trades</a>
+      <a class="NavPages" href="Create.html">Create Trade</a>
+      <a class="NavPages" href="AboutUs.html">About us</a>
+      <a class="NavPages" href="YourProfile.html"
+        ><i class="fa-solid fa-user"></i
+      ></a>
+    </nav>
+
+    <div class="AllTrades">
+      <h1 class="heading">All Trades</h1>
+      <p class="subtitle">
+        Discover Unique Finds & Give Your Items a New Home! 
+      </p>
+      <input type="text" placeholder="search">
+      
+    </div>
+    <div class="AllTradesbutton">
+      <button class="example-btn2">See more</button>
+      <button class="example-btn2">Create own Trade</button>
+    </div>
+    <div class="card-container">
+      <div class="card">
+          <img src="../table.jpg">
+          <h4>Table Lamp</h4>
+          <p>Warm shade, bought 2 years ago, cozy glow.</p>
+          <button class="match-button">Match</button>
+          <p>140 Views</p>
+      </div>
+      <div class="card">
+        <img src="../table.jpg">
+          <h4>Area Rug</h4>
+          <p>Soft, neutral rug with a small corner stain.</p>
+          <button class="match-button">Match</button>
+          <p>56 Views</p>
+      </div>
+      <div class="card">
+        <img src="../table.jpg">
+          <h4>Office Chair</h4>
+          <p>Ergonomic, 1 year old, adjustable height.</p>
+          <button class="match-button">Match</button>
+          <p>39 Views</p>
+      </div>
+      <div class="card">
+        <img src="../table.jpg">
+          <h4>Old Vase</h4>
+          <p>Sleek ceramic vase, perfect for decor.</p>
+          <button class="match-button">Match</button>
+          <p>170 Views</p>
+      </div>
+      <div class="card">
+        <img src="../table.jpg">
+          <h4>Old Vase</h4>
+          <p>Sleek ceramic vase, perfect for decor.</p>
+          <button class="match-button">Match</button>
+          <p>170 Views</p>
+      </div>
+      <div class="card">
+        <img src="../table.jpg">
+          <h4>Old Vase</h4>
+          <p>Sleek ceramic vase, perfect for decor.</p>
+          <button class="match-button">Match</button>
+          <p>170 Views</p>
+      </div>
+      <div class="card">
+        <img src="../table.jpg">
+          <h4>Old Vase</h4>
+          <p>Sleek ceramic vase, perfect for decor.</p>
+          <button class="match-button">Match</button>
+          <p>170 Views</p>
+      </div>
+  </div>
+  
+  <div class="card-container">
+    <div class="card">
+        <img src="../table.jpg">
+        <h4>Table Lamp</h4>
+        <p>Warm shade, bought 2 years ago, cozy glow.</p>
+        <button class="match-button">Match</button>
+        <p>140 Views</p>
+    </div>
+    <div class="card">
+      <img src="../table.jpg">
+        <h4>Area Rug</h4>
+        <p>Soft, neutral rug with a small corner stain.</p>
+        <button class="match-button">Match</button>
+        <p>56 Views</p>
+    </div>
+    <div class="card">
+      <img src="../table.jpg">
+        <h4>Office Chair</h4>
+        <p>Ergonomic, 1 year old, adjustable height.</p>
+        <button class="match-button">Match</button>
+        <p>39 Views</p>
+    </div>
+    <div class="card">
+      <img src="../table.jpg">
+        <h4>Old Vase</h4>
+        <p>Sleek ceramic vase, perfect for decor.</p>
+        <button class="match-button">Match</button>
+        <p>170 Views</p>
+    </div>
+    <div class="card">
+      <img src="../table.jpg">
+        <h4>Old Vase</h4>
+        <p>Sleek ceramic vase, perfect for decor.</p>
+        <button class="match-button">Match</button>
+        <p>170 Views</p>
+    </div>
+    <div class="card">
+      <img src="../table.jpg">
+        <h4>Old Vase</h4>
+        <p>Sleek ceramic vase, perfect for decor.</p>
+        <button class="match-button">Match</button>
+        <p>170 Views</p>
+    </div>
+    <div class="card">
+      <img src="../table.jpg">
+        <h4>Old Vase</h4>
+        <p>Sleek ceramic vase, perfect for decor.</p>
+        <button class="match-button">Match</button>
+        <p>170 Views</p>
+    </div>
+</div>
+<div class="card-container">
+  <div class="card">
+      <img src="../table.jpg">
+      <h4>Table Lamp</h4>
+      <p>Warm shade, bought 2 years ago, cozy glow.</p>
+      <button class="match-button">Match</button>
+      <p>140 Views</p>
+  </div>
+  <div class="card">
+    <img src="../table.jpg">
+      <h4>Area Rug</h4>
+      <p>Soft, neutral rug with a small corner stain.</p>
+      <button class="match-button">Match</button>
+      <p>56 Views</p>
+  </div>
+  <div class="card">
+    <img src="../table.jpg">
+      <h4>Office Chair</h4>
+      <p>Ergonomic, 1 year old, adjustable height.</p>
+      <button class="match-button">Match</button>
+      <p>39 Views</p>
+  </div>
+  <div class="card">
+    <img src="../table.jpg">
+      <h4>Old Vase</h4>
+      <p>Sleek ceramic vase, perfect for decor.</p>
+      <button class="match-button">Match</button>
+      <p>170 Views</p>
+  </div>
+  <div class="card">
+    <img src="../table.jpg">
+      <h4>Old Vase</h4>
+      <p>Sleek ceramic vase, perfect for decor.</p>
+      <button class="match-button">Match</button>
+      <p>170 Views</p>
+  </div>
+  <div class="card">
+    <img src="../table.jpg">
+      <h4>Old Vase</h4>
+      <p>Sleek ceramic vase, perfect for decor.</p>
+      <button class="match-button">Match</button>
+      <p>170 Views</p>
+  </div>
+  <div class="card">
+    <img src="../table.jpg">
+      <h4>Old Vase</h4>
+      <p>Sleek ceramic vase, perfect for decor.</p>
+      <button class="match-button">Match</button>
+      <p>170 Views</p>
+  </div>
+</div>
+<center>
+<button class="example-btn2">View more</button>
+</center>
+  </body>
+  <div class="footer">
+    <div>
+      <h3>TRADEROO</h3>
+      <p>We help you find your dream trade</p>
+      <p><strong>Adress</strong><br />Lucerne 6002, Switzerland</p>
+      <p><strong>Contact</strong><br />teamtraderoo@gmail.com</p>
+      <p>Legal status: Sole proprietorship</p>
+    </div>
+    <div>
+      <h3>Information</h3>
+      <a href="#">About</a>
+      <a href="#">Product</a>
+      <a href="#">Blog</a>
+    </div>
+    <div>
+      <h3>Company</h3>
+      <a href="#">Team</a>
+      <a href="#">Out Idea</a>
+      <a href="#">Our story</a>
+    </div>
+    <div>
+      <h3>Contact</h3>
+      <a href="#">Feedback</a>
+      <a href="#">Pricing</a>
+      <a href="#">Resources</a>
+    </div>
+  </div>
+</footer>
 </html>
