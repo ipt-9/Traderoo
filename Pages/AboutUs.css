@@ -1,56 +1,122 @@
 body {
-    font-family: "Manrope", sans-serif;
-    background-color: #f9f9f9;
-    margin: 0;
-    padding: 20px;
+  font-family: "Manrope", sans-serif;
+  background-color: #f9f9f9;
+  margin: 0;
+  padding: 20px;
 }
-.NavBar{
-    text-align: center; 
-    padding: 10px; 
-    background-color: #fff; 
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-    
+.NavBar {
+  text-align: center;
+  padding: 10px;
+  background-color: #fff;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
 }
-.NavPages{
-    margin: 0 15px; 
-    color: gray; 
-    text-decoration: none; 
-    font-size: 21px;
+.NavPages {
+  margin: 0 15px;
+  color: gray;
+  text-decoration: none;
+  font-size: 21px;
 }
-.Introduction{
-    background-color: #A1D88B;
+.Introduction {
+  background-color: #9bd976;
+  text-align: center;
+  padding-bottom: 30px;
+}
+.Introduction h1 {
+  font-family: "Manrope", serif;
+  color: black;
+  padding-top: 5%;
+  font-size: 60px;
+}
+.Introduction p {
+  font-size: 25px;
+  margin: 40px 205px;
+}
+.Mission {
+  text-align: center;
+  margin-top: -40px;
+}
+.Mission h1 {
+  font-family: "Manrope", serif;
+  color: black;
+  padding-top: 5%;
+  font-size: 60px;
+  margin: 40px 205px;
+}
+.Mission p {
+  font-size: 25px;
+  margin: 40px 205px;
+}
+.earth {
+  font-size: 100px;
+}
+.container {
+  margin: auto;
+  background-color: #9bd976;
+}
+.section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 40px 50px;
+}
+.text {
+  width: 60%;
 }
 
-.heading{
-    font-family: "Manrope", serif;
-    color: black; 
-    padding-top: 5%;
-    font-size: 60px;
-   
+.container h2 {
+  font-size: 60px;
+  font-weight: bold;
 }
-.subtitle{
-    font-size: 25px;
+.container p {
+  font-size: 25px;
+}
+.values ul {
+  list-style: none;
+  padding: 0;
+}
+.text li {
+  margin-bottom: 10px;
+  font-size: 25px;
+}
+.icons {
+  font-size: 200px;
+}
+.Team {
+  text-align: center;
+  padding-bottom: 30px;
+}
+.Team h1 {
+  font-family: "Manrope", serif;
+  color: black;
+  padding-top: 5%;
+  font-size: 60px;
+  margin: 40px 205px;
+}
+.Team p {
+  font-size: 25px;
+  margin: 40px 205px;
 }
 .footer {
-    background-color: #A1D88B;
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    color: #1F1F1F;
+  background-color: #a1d88b;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  color: #1f1f1f;
 }
 .footer div {
-    flex: 1;
-    min-width: 200px;
-    margin: 10px;
+  flex: 1;
+  min-width: 200px;
+  margin: 10px;
 }
 .footer h3 {
-    font-size: 16px;
-    font-weight: bold;
+  font-size: 16px;
+  font-weight: bold;
 }
-.footer p, .footer a {
-    color: #333;
-    text-decoration: none;
-    margin: 5px 0;
-    display: block;
+.footer p,
+.footer a {
+  color: #333;
+  text-decoration: none;
+  margin: 5px 0;
+  display: block;
 }
