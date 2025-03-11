@@ -29,7 +29,7 @@ body {
 }
 .Introduction p {
   font-size: 25px;
-  margin: 40px 205px;
+  margin: 40px 330px;
 }
 .Mission {
   text-align: center;
@@ -40,11 +40,11 @@ body {
   color: black;
   padding-top: 5%;
   font-size: 60px;
-  margin: 40px 205px;
+  margin: 40px 330px;
 }
 .Mission p {
   font-size: 25px;
-  margin: 40px 205px;
+  margin: 40px 330px;
 }
 .earth {
   font-size: 100px;
@@ -94,7 +94,7 @@ body {
 }
 .Team p {
   font-size: 25px;
-  margin: 40px 205px;
+  margin: 40px 330px;
 }
 .footer {
   background-color: #a1d88b;
