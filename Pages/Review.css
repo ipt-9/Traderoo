@@ -23,6 +23,7 @@ body {
   justify-content: space-between;
   flex-wrap: wrap;
   color: #1f1f1f;
+  margin-top: 253px;
 }
 .footer div {
   flex: 1;
@@ -46,15 +47,12 @@ body {
   padding-top: 5%;
   font-size: 35px;
 }
-.subtitle {
-  font-size: 25px;
-}
+
 .review-container {
   max-width: 400px;
   margin: auto;
 }
 
-/* Überschriften */
 .title {
   font-size: 24px;
   font-weight: bold;
@@ -62,20 +60,20 @@ body {
 
 .subtitle {
   color: gray;
-  font-size: 14px;
+  font-size: 25px;
   margin-bottom: 20px;
 }
 
-/* Bewertungskarte */
 .review-card {
   background-color: #a8e490;
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin-bottom: 50px;
+
+  width: 50%;
+  margin: 50px auto;
 }
 
-/* Benutzer-Info */
 .user-info {
   display: flex;
   align-items: center;
@@ -94,21 +92,16 @@ body {
   flex-grow: 1;
 }
 
-/* Buttons */
-.btn {
+.btnMore {
   padding: 6px 12px;
   border-radius: 5px;
-  font-size: 12px;
+  font-size: 20px;
   cursor: pointer;
   border: none;
-}
-
-.black {
-  background-color: black;
+  background-color: #74c365;
   color: white;
 }
 
-/* Getauschtes Item */
 .trade-info h3,
 .review-section h3,
 .rating-section h3 {
@@ -136,9 +129,8 @@ body {
   font-weight: bold;
 }
 
-/* Bewertungstext */
 textarea {
-  width: 100%;
+  width: 99%;
   height: 60px;
   border-radius: 5px;
   border: none;
@@ -146,17 +138,15 @@ textarea {
   resize: none;
 }
 
-/* Sterne-Bewertung */
 .stars span {
   font-size: 20px;
   cursor: pointer;
 }
 
-/* Bewertung absenden */
 .create-review-btn {
   background-color: #74c365;
   color: white;
-  font-size: 14px;
+  font-size: 18px;
   padding: 10px;
   border: none;
   border-radius: 8px;
