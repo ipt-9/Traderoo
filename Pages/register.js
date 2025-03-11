@@ -1,52 +1,42 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const registerForm = document.querySelector("form");
-    const messageBox = document.getElementById("message");
+    const registerForm = document.getElementById("registerForm");
 
-    registerForm.addEventListener("submit", function (event) {
-        event.preventDefault(); // Verhindert das Neuladen der Seite
+    if (!registerForm) {
+        console.error("❌ Error: The form with ID 'registerForm' was not found!");
+        return;
+    }
 
-        // Eingabewerte abrufen
-        const username = document.getElementById("Username").value.trim();
+    registerForm.addEventListener("submit", async function (event) {
+        event.preventDefault(); // Prevent page reload
+
+        const username = document.getElementById("username").value.trim();
         const email = document.getElementById("email").value.trim();
         const password = document.getElementById("password").value.trim();
 
-        // Überprüfung der Eingaben
         if (!username || !email || !password) {
-            showMessage("Bitte fülle alle Felder aus!", "error");
+            alert("Please fill out all fields!");
             return;
         }
 
-        if (!validateEmail(email)) {
-            showMessage("Bitte gib eine gültige E-Mail-Adresse ein!", "error");
-            return;
+        try {
+            const response = await fetch("http://localhost:5000/api/auth/register", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ username, email, password }),
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+                alert("✅ Registration successful! Redirecting...");
+                localStorage.setItem("userToken", data.token);
+                setTimeout(() => { window.location.href = "dashboard.html"; }, 2000);
+            } else {
+                alert(`❌ Error: ${data.message}`);
+            }
+        } catch (error) {
+            console.error("❌ Registration failed:", error);
+            alert("Server error. Please try again later.");
         }
-
-        if (password.length < 6) {
-            showMessage("Das Passwort muss mindestens 6 Zeichen lang sein!", "error");
-            return;
-        }
-
-        // Temporäre Speicherung im Local Storage (später mit Datenbank ersetzen)
-        const user = { username, email, password };
-        localStorage.setItem("registeredUser", JSON.stringify(user));
-
-        showMessage("Registrierung erfolgreich! Du wirst weitergeleitet...", "success");
-
-        // Nach 2 Sekunden zur Login-Seite weiterleiten
-        setTimeout(() => {
-            window.location.href = "index.html";
-        }, 2000);
     });
-
-    // Funktion zur E-Mail-Validierung
-    function validateEmail(email) {
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return emailPattern.test(email);
-    }
-
-    // Funktion zur Anzeige von Nachrichten
-    function showMessage(text, type) {
-        messageBox.textContent = text;
-        messageBox.style.color = type === "error" ? "red" : "green";
-    }
 });
