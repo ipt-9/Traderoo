@@ -33,6 +33,7 @@ body {
   font-family: "Manrope", serif;
   padding: 20px;
   background-color: #9bd976;
+  margin-top: 40px;
 }
 
 .mostviewed-div {
@@ -84,7 +85,7 @@ body {
   text-align: center;
   color: black;
   margin-bottom: 11%;
-  margin-top: -6%;
+  margin-top: 6%;
 }
 .heading {
   font-family: "Manrope", serif;
