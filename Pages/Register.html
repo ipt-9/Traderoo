@@ -21,11 +21,11 @@
         </div>
         <div class="right-panel">
             <h2>Create an account</h2>
-            <form>
+            <form id="registerForm">
                 <div class="form-group">
                     <script defer src="register.js"></script>
                     <label for="Username">Username</label>
-                    <input type="text" id="Username" placeholder="test" required />
+                    <input type="text" id="username" placeholder="test" required />
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
@@ -42,11 +42,12 @@
                 </div>
             </form>
             <p id="message"></p>
-            <script src="register.js"></script>
+            
             <div class="login-link">
                 Already Have An Account? <a href="index.html">Log In</a>
             </div>
         </div>
     </div>
+    <script src="register.js"></script>
 </body>
 </html>

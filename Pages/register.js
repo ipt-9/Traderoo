@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
             if (data.success) {
                 alert("✅ Registration successful! Redirecting...");
                 localStorage.setItem("userToken", data.token);
-                setTimeout(() => { window.location.href = "dashboard.html"; }, 2000);
+                setTimeout(() => { window.location.href = "index.html"; }, 2000);
             } else {
                 alert(`❌ Error: ${data.message}`);
             }

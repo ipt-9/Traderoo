@@ -1,39 +1,50 @@
 document.addEventListener("DOMContentLoaded", function () {
     const loginForm = document.querySelector("form");
-    const messageBox = document.createElement("p"); // Nachrichtenelement für Fehler/Erfolg
+    const messageBox = document.createElement("p"); // Message box for errors/success
     loginForm.appendChild(messageBox);
 
-    loginForm.addEventListener("submit", function (event) {
-        event.preventDefault(); // Verhindert das Neuladen der Seite
+    loginForm.addEventListener("submit", async function (event) {
+        event.preventDefault(); // Prevent page reload
 
-        // Eingabewerte abrufen
+        // Get input values
         const email = document.getElementById("email").value.trim();
         const password = document.getElementById("password").value.trim();
 
-        // Erwartete Login-Daten
-        const validEmail = "test@123";
-        const validPassword = "1234567890";
-
-        // Validierung der Eingaben
+        // Validate input
         if (!email || !password) {
             showMessage("Bitte fülle alle Felder aus!", "error");
             return;
         }
 
-        if (email !== validEmail || password !== validPassword) {
-            showMessage("Falsche E-Mail oder falsches Passwort!", "error");
-            return;
+        try {
+            const response = await fetch("http://localhost:5000/api/auth/login", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email, password }),
+            });
+
+            const data = await response.json();
+            console.log("Server Response:", data); // Debugging
+
+            if (data.success) {
+                showMessage("✅ Login erfolgreich! Weiterleitung...", "success");
+
+                // Save token in local storage
+                localStorage.setItem("userToken", data.token);
+
+                setTimeout(() => {
+                    window.location.href = "Home.html"; // Redirect to dashboard
+                }, 2000);
+            } else {
+                showMessage(`❌ ${data.message}`, "error");
+            }
+        } catch (error) {
+            console.error("❌ Fehler beim Login:", error);
+            showMessage("Serverfehler. Bitte versuche es später erneut!", "error");
         }
-
-        showMessage("Login erfolgreich! Weiterleitung...", "success");
-
-        // Nach 2 Sekunden zur Startseite weiterleiten
-        setTimeout(() => {
-            window.location.href = "Home.html";
-        }, 2000);
     });
 
-    // Funktion zur Anzeige von Nachrichten
+    // Function to show messages
     function showMessage(text, type) {
         messageBox.textContent = text;
         messageBox.style.color = type === "error" ? "red" : "green";
