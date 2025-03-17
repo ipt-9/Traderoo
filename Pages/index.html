@@ -16,7 +16,7 @@
     </div>
 
     <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+    
     <div class="login-container">
       <h2>Login to your account</h2>
       <form>
@@ -31,11 +31,15 @@
           <div class="forgot-password">
               <a href="#">Forgot?</a>
           </div>
-          <a href="Home.html" type="submit" class="btn">Login now</a>
+          <button href="Home.html" type="submit" id="loginButton" class="btn">Login now</button>
+          
       </form>
+      <p id="message"></p>
+      
       <div class="signup-link">
           Don't Have An Account? <a href="Register.html">Sign Up</a>
       </div>
   </div>
+  <script src="login.js"></script>
   </body>
 </html>
