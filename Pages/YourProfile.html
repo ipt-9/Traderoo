@@ -43,26 +43,28 @@
         ><i class="fa-solid fa-user"></i
       ></a>
     </nav>
-
-    <div class="YourProfile">
-      <h1 class="heading">YourProfile</h1>
-      <p class="subtitle">Hello, Im Markus! Feel free to checkout my trades</p>
-      <input type="text" placeholder="search in Markus Trades" />
-    </div>
-    <div class="AllTradesbutton">
-      <button class="example-btn2">View matches</button>
-      <a href="AllTrades.html"
-        ><button class="example-btn2">See more</button></a
-      >
-      <a href="Create.html"
-        ><button class="example-btn2">Create new Trade</button></a
-      >
-    </div>
+    <center>
+      <div class="YourProfile">
+        <h1 class="heading">Your Profile</h1>
+        <p class="subtitle">Hello, Im <span id="username"></span></p>
+        <p>Feel free to checkout my trades</p>
+        <input type="text" placeholder="search in my Trades" />
+      </div>
+      <div class="AllTradesbutton">
+        <button class="example-btn2">View matches</button>
+        <a href="AllTrades.html"
+          ><button class="example-btn2">See more</button></a
+        >
+        <a href="Create.html"
+          ><button class="example-btn2">Create new Trade</button></a
+        >
+      </div>
+    </center>
 
     <div class="card-container">
       <div class="profile-card">
-        <div class="name">Markus Rieder</div>
-        <div class="username">markusrieder22</div>
+        <div class="name" id="username"></div>
+        <div class="username" id="email"></div>
         <div class="level">Level 14 Trader</div>
         <div class="stats">👥 13 Follower | 6 Following</div>
         <div class="stats">🔄 35 Successful Trades</div>
@@ -138,6 +140,7 @@
     <center>
       <button class="example-btn2">View more</button>
     </center>
+    <script src="YourProfile.js"></script>
   </body>
   <footer>
     <div class="footer">
