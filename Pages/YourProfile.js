@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", async function () {
     const userToken = localStorage.getItem("userToken"); // Token aus dem Local Storage holen
     if (!userToken) {
-        window.location.href = "Login.html"; // Falls nicht eingeloggt, weiterleiten
+        window.location.href = "index.html"; // Falls nicht eingeloggt, weiterleiten
         return;
     }
 
