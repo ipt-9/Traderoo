@@ -30,7 +30,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 showMessage("✅ Login erfolgreich! Weiterleitung...", "success");
 
                 // Save token in local storage
-                localStorage.setItem("userToken", data.token);
+                console.log("Username from response:", data.username);
+
+
+                localStorage.setItem("loggedInUser", data.username );
+                
+
 
                 setTimeout(() => {
                     window.location.href = "Home.html"; // Redirect to dashboard

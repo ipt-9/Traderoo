@@ -66,12 +66,16 @@ router.post("/login", (req, res) => {
 
         // Generate new token
         const token = jwt.sign(
-            { username: user.Username, email: user.Email },
-            "geheimes_token", // Replace with process.env.JWT_SECRET in production
+            { userID: user.id }, // 👈 jetzt ID statt Username
+            "geheimes_token",
             { expiresIn: "1h" }
-        );
-
-        res.json({ success: true, message: "Login erfolgreich!", token });
+          );
+          
+          res.json({
+            success: true,
+            message: "Login erfolgreich!",
+            token
+          });
     });
 });
 

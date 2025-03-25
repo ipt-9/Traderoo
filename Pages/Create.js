@@ -1,78 +1,40 @@
-/*document.addEventListener("DOMContentLoaded", async function () {
+document.addEventListener("DOMContentLoaded", async function () {
     const imageUploadInput = document.getElementById("imageUpload");
     const addImageBox = document.getElementById("addImageBox");
     const imageContainer = document.querySelector(".image-upload");
     const productConditionDropdown = document.getElementById("productCondition");
 
-    // 🟢 Load product conditions from the database
+    // 🔹 Lade Produktbedingungen aus der DB
     try {
-        console.log("Fetching product conditions...");
         const response = await fetch("http://localhost:5000/api/products/conditions");
-
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-
         const conditions = await response.json();
-        console.log("✅ Product conditions received:", conditions);
-
-        productConditionDropdown.innerHTML = "<option value=''>Select Condition</option>"; // Clear previous options
-
+        productConditionDropdown.innerHTML = "<option value=''>Select Condition</option>";
         conditions.forEach(condition => {
             const option = document.createElement("option");
-            option.value = condition.Condition_Name; // Foreign Key
+            option.value = condition.Condition_Name;
             option.textContent = condition.Condition_Name;
             productConditionDropdown.appendChild(option);
         });
     } catch (error) {
-        console.error("❌ Error fetching product conditions:", error);
-        productConditionDropdown.innerHTML = "<option value=''>Error loading conditions</option>";
+        console.error("❌ Error loading conditions:", error);
+        productConditionDropdown.innerHTML = "<option value=''>Error loading</option>";
     }
 
-    console.log("🔍 Checking stored user before parsing:", localStorage.getItem("loggedInUser"));
-
-    let loggedInUser = localStorage.getItem("loggedInUser");
-
-    // ✅ Ensure user is logged in
-    if (!loggedInUser) {
-        alert("⚠️ No user logged in! Please log in first.");
-        window.location.href = "index.html"; // Redirect to login page
+    // 🔹 Token prüfen
+    const token = localStorage.getItem("userToken");
+    if (!token) {
+        alert("❌ Kein Login-Token gefunden. Bitte erneut einloggen.");
+        window.location.href = "index.html";
         return;
     }
 
-    try {
-        loggedInUser = JSON.parse(loggedInUser); // ✅ Parse JSON safely
-
-        // ✅ Ensure required fields exist
-        if (!loggedInUser.username || !loggedInUser.email) {
-            throw new Error("Missing required user fields.");
-        }
-    } catch (error) {
-        console.error("❌ Error parsing stored user JSON:", error);
-        alert("⚠️ Invalid user data stored. Please log in again.");
-        localStorage.removeItem("loggedInUser"); // Remove invalid data
-        window.location.href = "index.html"; // Redirect to login page
-        return;
-    }
-
-    console.log("✅ Successfully retrieved user:", loggedInUser);
-
-    const fk_Username = loggedInUser.username; // ✅ Attach Username to FormData
-    if (!fk_Username) {
-        alert("⚠️ No username found in stored user data!");
-        return;
-    }
-
-    // 🟢 Image Upload Handling
+    // 🔹 Bilder-Upload (optional)
     addImageBox.addEventListener("click", () => imageUploadInput.click());
-
-    imageUploadInput.addEventListener("change", function (event) {
+    imageUploadInput.addEventListener("change", event => {
         const files = event.target.files;
-        if (!files.length) return;
-
         for (let file of files) {
             const reader = new FileReader();
-            reader.onload = function (e) {
+            reader.onload = e => {
                 const img = document.createElement("img");
                 img.src = e.target.result;
                 img.classList.add("image-preview");
@@ -87,41 +49,14 @@
         }
     });
 
-    // 🟢 Handle Trade Creation
+    // 🔹 Trade erstellen
     document.getElementById("createTradeButton").addEventListener("click", async function () {
         const title = document.getElementById("title").value.trim();
         const estimatedValue = document.getElementById("estimatedValue").value.trim();
         const fk_Productcondition = document.getElementById("productCondition").value;
 
-        // ✅ Check if user is stored in `localStorage`
-        let loggedInUser = localStorage.getItem("loggedInUser");
-
-        if (!loggedInUser) {
-            alert("⚠️ No user logged in! Please log in first.");
-            window.location.href = "index.html"; // Redirect to login page
-            return;
-        }
-
-        try {
-            loggedInUser = JSON.parse(loggedInUser); // ✅ Parse the stored JSON
-
-            // ✅ Ensure required fields exist
-            if (!loggedInUser.username || !loggedInUser.email) {
-                throw new Error("Missing required user fields.");
-            }
-        } catch (error) {
-            console.error("❌ Error parsing stored user JSON:", error);
-            alert("⚠️ Invalid user data stored. Please log in again.");
-            localStorage.removeItem("loggedInUser"); // Remove invalid data
-            window.location.href = "index.html"; // Redirect to login page
-            return;
-        }
-
-        const fk_Username = loggedInUser.username; // ✅ Get Username from stored data
-
-        // ✅ Validate required fields before sending
         if (!title || !estimatedValue || !fk_Productcondition) {
-            alert("⚠️ Please fill in all required fields!");
+            alert("⚠️ Bitte fülle alle Pflichtfelder aus!");
             return;
         }
 
@@ -135,39 +70,30 @@
         formData.append("depth", document.getElementById("depth").value.trim());
         formData.append("width", document.getElementById("width").value.trim());
         formData.append("fk_Productcondition", fk_Productcondition);
-        formData.append("fk_Username", fk_Username); // ✅ Attach Username to FormData
 
-        // ✅ Attach images to FormData (if available)
-        if (imageUploadInput.files.length > 0) {
-            for (let file of imageUploadInput.files) {
-                formData.append("images", file);
-            }
-        }
-
-        // 🟢 Debug: Log form data before sending
-        console.log("🔍 Form Data being sent:");
-        for (let pair of formData.entries()) {
-            console.log(`${pair[0]}:`, pair[1]); // Check values before sending
+        for (let file of imageUploadInput.files) {
+            formData.append("images", file);
         }
 
         try {
             const response = await fetch("http://localhost:5000/api/products/create", {
                 method: "POST",
+                headers: {
+                    Authorization: `Bearer ${token}` // 🟢 WICHTIG!
+                },
                 body: formData
             });
 
             const result = await response.json();
-            console.log("✅ Server Response:", result);
-
             if (result.success) {
-                alert("✅ Trade created successfully!");
+                alert("✅ Trade erstellt!");
                 window.location.href = "Create.html";
             } else {
-                alert(`❌ Error: ${result.message}`);
+                alert(`❌ Fehler: ${result.message}`);
             }
         } catch (error) {
-            console.error("❌ Error uploading trade:", error);
-            alert("Server error. Try again later.");
+            console.error("❌ Fehler beim Upload:", error);
+            alert("Serverfehler. Versuche es später erneut.");
         }
     });
-});*/
+});
