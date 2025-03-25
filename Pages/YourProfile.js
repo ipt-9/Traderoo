@@ -17,9 +17,12 @@ document.addEventListener("DOMContentLoaded", async function () {
 
         const data = await response.json();
 
-        if (data.success) {
-            document.getElementById("username").textContent = data.user.Username;
-            document.getElementById("email").textContent = data.user.Email;
+        if (data.success && data.user) {
+            const usernameElements = document.querySelectorAll(".username");
+            usernameElements.forEach(el => el.textContent = data.user.Username || "Unbekannter Benutzer");
+
+            const emailElement = document.getElementById("email");
+            if (emailElement) emailElement.textContent = data.user.Email || "Keine E-Mail verfügbar";
         } else {
             console.log("⚠ Fehler beim Laden des Profils:", data.message);
         }
