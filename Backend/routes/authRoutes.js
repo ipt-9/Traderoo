@@ -40,34 +40,43 @@ router.post("/register", async (req, res) => {
 });
 
 router.post("/login", (req, res) => {
-    const { email, password } = req.body;
+    const { username, password } = req.body; // 🟢 Use `username` instead of `email`
 
-    db.query("SELECT * FROM Users WHERE Email = ?", [email], async (err, results) => {
+    if (!username || !password) {
+        return res.status(400).json({ success: false, message: "Missing username or password!" });
+    }
+
+    // ✅ Query Database by Username Instead of Email
+    db.query("SELECT * FROM Users WHERE Username = ?", [username], async (err, results) => {
         if (err) {
-            console.error("❌ Database Error:", err);
-            return res.status(500).json({ success: false, message: "Serverfehler!" });
+            console.error("❌ Database error:", err);
+            return res.status(500).json({ success: false, message: "Database error!" });
         }
 
         if (results.length === 0) {
-            return res.status(400).json({ success: false, message: "Benutzer nicht gefunden!" });
+            return res.status(401).json({ success: false, message: "User not found!" });
         }
 
         const user = results[0];
 
-        // Compare hashed password
-        const isMatch = await bcrypt.compare(password, user.Password);
-        if (!isMatch) {
-            return res.status(401).json({ success: false, message: "Falsches Passwort!" });
+        // ✅ Compare hashed password
+        const match = await bcrypt.compare(password, user.Password);
+        if (!match) {
+            return res.status(401).json({ success: false, message: "Incorrect password!" });
         }
 
-        // Generate new token
-        const token = jwt.sign(
-            { username: user.Username, email: user.Email },
-            "geheimes_token", // Replace with process.env.JWT_SECRET in production
-            { expiresIn: "1h" }
-        );
+        // ✅ Generate JWT token
+        const token = jwt.sign({ username: user.Username, email: user.Email }, SECRET_KEY, { expiresIn: "1h" });
 
-        res.json({ success: true, message: "Login erfolgreich!", token });
+        res.json({
+            success: true,
+            message: "Login successful!",
+            user: {
+                username: user.Username, // 🟢 Now storing username
+                email: user.Email
+            },
+            token
+        });
     });
 });
 

@@ -4,6 +4,7 @@ const cors = require('cors');
 const db = require('./database'); // MySQL-Verbindung
 const authRoutes = require('./routes/authRoutes');
 const userRoutes = require('./routes/userRoutes');
+const productRoutes = require("./routes/productRoutes");
 
 const app = express();
 app.use(cors());
@@ -12,6 +13,7 @@ app.use(express.json());
 // API-Routen direkt verwenden
 app.use('/api/auth', authRoutes);
 app.use('/api/user', userRoutes);
+app.use("/api/products", productRoutes);
 
 // Server starten
 app.listen(5000, () => {
