@@ -1,20 +1,18 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const registerForm = document.getElementById("registerForm");
-
-    if (!registerForm) {
-        console.error("❌ Error: The form with ID 'registerForm' was not found!");
-        return;
-    }
+    const registerForm = document.getElementById("registerForm"); // Falls du `id="registerForm"` nutzt → `document.getElementById("registerForm")`
+    const messageBox = document.createElement("p"); // Nachrichtenelement für Fehler/Erfolg
+    registerForm.appendChild(messageBox);
 
     registerForm.addEventListener("submit", async function (event) {
-        event.preventDefault(); // Prevent page reload
+        event.preventDefault(); // Seite nicht neuladen
 
         const username = document.getElementById("username").value.trim();
         const email = document.getElementById("email").value.trim();
         const password = document.getElementById("password").value.trim();
 
+        // Validierung
         if (!username || !email || !password) {
-            alert("Please fill out all fields!");
+            showMessage("Bitte fülle alle Felder aus!", "error");
             return;
         }
 
@@ -26,17 +24,28 @@ document.addEventListener("DOMContentLoaded", function () {
             });
 
             const data = await response.json();
+            console.log("Server Response:", data); // Debug
 
             if (data.success) {
-                alert("✅ Registration successful! Redirecting...");
+                showMessage("✅ Registrierung erfolgreich! Weiterleitung...", "success");
+
+                // Speichern des Tokens in localStorage
                 localStorage.setItem("userToken", data.token);
-                setTimeout(() => { window.location.href = "index.html"; }, 2000);
-            } else {
-                alert(`❌ Error: ${data.message}`);
+                localStorage.setItem("loggedInUser", JSON.stringify({ username })); // Username speichern
+
+                setTimeout(() => {
+                    window.location.href = "index.html"; // Weiterleitung
+                }, 2000);
+            
             }
         } catch (error) {
-            console.error("❌ Registration failed:", error);
-            alert("Server error. Please try again later.");
+            console.error("❌ Fehler bei der Registrierung:", error);
+            showMessage("Serverfehler. Bitte versuche es später erneut!", "error");
         }
     });
+
+    function showMessage(text, type) {
+        messageBox.textContent = text;
+        messageBox.style.color = type === "error" ? "red" : "green";
+    }
 });

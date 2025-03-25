@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", async function () {
+/*document.addEventListener("DOMContentLoaded", async function () {
     const imageUploadInput = document.getElementById("imageUpload");
     const addImageBox = document.getElementById("addImageBox");
     const imageContainer = document.querySelector(".image-upload");
@@ -170,4 +170,4 @@ document.addEventListener("DOMContentLoaded", async function () {
             alert("Server error. Try again later.");
         }
     });
-});
+});*/

@@ -1,15 +1,18 @@
 document.addEventListener("DOMContentLoaded", function () {
-
     const loginForm = document.querySelector("form");
+    const messageBox = document.createElement("p"); // Message box for errors/success
+    loginForm.appendChild(messageBox);
 
     loginForm.addEventListener("submit", async function (event) {
         event.preventDefault(); // Prevent page reload
 
-        const username = document.getElementById("username").value.trim(); // 🟢 Use username field
+        // Get input values
+        const username = document.getElementById("username").value.trim();
         const password = document.getElementById("password").value.trim();
 
+        // Validate input
         if (!username || !password) {
-            alert("⚠️ Please fill in all fields!");
+            showMessage("Bitte fülle alle Felder aus!", "error");
             return;
         }
 
@@ -17,28 +20,33 @@ document.addEventListener("DOMContentLoaded", function () {
             const response = await fetch("http://localhost:5000/api/auth/login", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ username, password }) // 🟢 Send username instead of email
+                body: JSON.stringify({ username, password }),
             });
 
             const data = await response.json();
-            console.log("✅ Login Response:", data); // Debugging
+            console.log("Server Response:", data); // Debugging
 
-            if (data.success && data.user) {
-                alert("✅ Login successful!");
+            if (data.success) {
+                showMessage("✅ Login erfolgreich! Weiterleitung...", "success");
 
-                // ✅ Store user object in `localStorage`
-                localStorage.setItem("loggedInUser", JSON.stringify({
-                    username: data.user.username,
-                    email: data.user.email
-                }));
+                // Save token in local storage
+                localStorage.setItem("userToken", data.token);
 
-                window.location.href = "Home.html"; // Redirect to home page
+                setTimeout(() => {
+                    window.location.href = "Home.html"; // Redirect to dashboard
+                }, 2000);
             } else {
-                alert(`❌ Error: ${data.message}`);
+                showMessage(`❌ ${data.message}`, "error");
             }
         } catch (error) {
-            console.error("❌ Login Error:", error);
-            alert("Server error. Try again later.");
+            console.error("❌ Fehler beim Login:", error);
+            showMessage("Serverfehler. Bitte versuche es später erneut!", "error");
         }
     });
+
+    // Function to show messages
+    function showMessage(text, type) {
+        messageBox.textContent = text;
+        messageBox.style.color = type === "error" ? "red" : "green";
+    }
 });

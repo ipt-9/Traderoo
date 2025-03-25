@@ -32,7 +32,11 @@ router.post("/register", async (req, res) => {
                     console.error("❌ Database Insert Error:", err); // Debugging
                     return res.status(500).json({ success: false, message: "Database insert failed!", error: err.sqlMessage });
                 }
-                res.json({ success: true, message: "Registration successful!", token });
+                return res.status(200).json({
+                    success: true,
+                    message: "User registered successfully",
+                    user: { username, email },
+                });
             }
         );
         
@@ -40,43 +44,34 @@ router.post("/register", async (req, res) => {
 });
 
 router.post("/login", (req, res) => {
-    const { username, password } = req.body; // 🟢 Use `username` instead of `email`
+    const { username, password } = req.body;
 
-    if (!username || !password) {
-        return res.status(400).json({ success: false, message: "Missing username or password!" });
-    }
-
-    // ✅ Query Database by Username Instead of Email
     db.query("SELECT * FROM Users WHERE Username = ?", [username], async (err, results) => {
         if (err) {
-            console.error("❌ Database error:", err);
-            return res.status(500).json({ success: false, message: "Database error!" });
+            console.error("❌ Database Error:", err);
+            return res.status(500).json({ success: false, message: "Serverfehler!" });
         }
 
         if (results.length === 0) {
-            return res.status(401).json({ success: false, message: "User not found!" });
+            return res.status(400).json({ success: false, message: "Benutzer nicht gefunden!" });
         }
 
         const user = results[0];
 
-        // ✅ Compare hashed password
-        const match = await bcrypt.compare(password, user.Password);
-        if (!match) {
-            return res.status(401).json({ success: false, message: "Incorrect password!" });
+        // Compare hashed password
+        const isMatch = await bcrypt.compare(password, user.Password);
+        if (!isMatch) {
+            return res.status(401).json({ success: false, message: "Falsches Passwort!" });
         }
 
-        // ✅ Generate JWT token
-        const token = jwt.sign({ username: user.Username, email: user.Email }, SECRET_KEY, { expiresIn: "1h" });
+        // Generate new token
+        const token = jwt.sign(
+            { username: user.Username, email: user.Email },
+            "geheimes_token", // Replace with process.env.JWT_SECRET in production
+            { expiresIn: "1h" }
+        );
 
-        res.json({
-            success: true,
-            message: "Login successful!",
-            user: {
-                username: user.Username, // 🟢 Now storing username
-                email: user.Email
-            },
-            token
-        });
+        res.json({ success: true, message: "Login erfolgreich!", token });
     });
 });
 
