@@ -7,11 +7,11 @@ document.addEventListener("DOMContentLoaded", function () {
         event.preventDefault(); // Prevent page reload
 
         // Get input values
-        const email = document.getElementById("email").value.trim();
+        const username = document.getElementById("username").value.trim();
         const password = document.getElementById("password").value.trim();
 
         // Validate input
-        if (!email || !password) {
+        if (!username || !password) {
             showMessage("Bitte fülle alle Felder aus!", "error");
             return;
         }
@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const response = await fetch("http://localhost:5000/api/auth/login", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ email, password }),
+                body: JSON.stringify({ username, password }),
             });
 
             const data = await response.json();

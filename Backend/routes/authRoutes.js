@@ -32,7 +32,11 @@ router.post("/register", async (req, res) => {
                     console.error("❌ Database Insert Error:", err); // Debugging
                     return res.status(500).json({ success: false, message: "Database insert failed!", error: err.sqlMessage });
                 }
-                res.json({ success: true, message: "Registration successful!", token });
+                return res.status(200).json({
+                    success: true,
+                    message: "User registered successfully",
+                    user: { username, email },
+                });
             }
         );
         
@@ -40,9 +44,9 @@ router.post("/register", async (req, res) => {
 });
 
 router.post("/login", (req, res) => {
-    const { email, password } = req.body;
+    const { username, password } = req.body;
 
-    db.query("SELECT * FROM Users WHERE Email = ?", [email], async (err, results) => {
+    db.query("SELECT * FROM Users WHERE Username = ?", [username], async (err, results) => {
         if (err) {
             console.error("❌ Database Error:", err);
             return res.status(500).json({ success: false, message: "Serverfehler!" });

@@ -14,102 +14,111 @@
       src="https://kit.fontawesome.com/d782156bec.js"
       crossorigin="anonymous"
     ></script>
+    <script defer src="Create.js"></script> <!-- JavaScript for handling uploads -->
     <title>Home</title>
     <style>
       a:hover {
-        color: black; /* Hover-Effekt */
-        font-weight: bold; /* Fettgedruckt bei Hover */
+        color: black;
+        font-weight: bold;
+      }
+
+      .image-upload {
+        display: flex;
+        gap: 10px;
+      }
+
+      .image-box {
+        width: 80px;
+        height: 80px;
+        border: 2px dashed #ccc;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        cursor: pointer;
+        position: relative;
+      }
+
+      .image-preview {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+
+      .hidden-input {
+        display: none;
       }
     </style>
   </head>
   <body>
     <!-- Navigation -->
-    <nav
-      class="NavBar"
-      style="
-        text-align: center;
-        padding: 10px;
-        background-color: #fff;
-        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-      "
-    >
-      <a class="NavPages" href="Home.html"> Traderoo</a>
+    <nav class="NavBar" style="text-align: center; padding: 10px; background-color: #fff; box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);">
+      <a class="NavPages" href="Home.html">Traderoo</a>
       <a class="NavPages" href="Home.html">Home</a>
       <a class="NavPages" href="Swipe.html">Swipe</a>
       <a class="NavPages" href="AllTrades.html">All Trades</a>
       <a class="NavPages" href="Create.html">Create Trade</a>
       <a class="NavPages" href="AboutUs.html">About us</a>
-      <a class="NavPages" href="YourProfile.html"
-        ><i class="fa-solid fa-user"></i
-      ></a>
+      <a class="NavPages" href="YourProfile.html"><i class="fa-solid fa-user"></i></a>
     </nav>
+
     <center>
       <div class="CreateTrades">
         <h1>Create Trade</h1>
         <p>Add the trade information here!</p>
       </div>
     </center>
+
     <div class="container">
       <div class="trade-info">
         <div class="input-group">
           <label>Title</label>
-          <input type="text" placeholder="Trade title (e.g., Bookshelf)" />
+          <input type="text" id="title" placeholder="Trade title (e.g., Bookshelf)" required />
         </div>
         <div class="input-group">
           <label>Description</label>
-          <textarea placeholder="Write a short description..."></textarea>
+          <textarea id="description" placeholder="Write a short description..." required></textarea>
         </div>
         <div class="input-group">
           <label>Brand</label>
-          <input type="text" placeholder="Brand (e.g., IKEA, Custom-made)" />
+          <input type="text" id="brand" placeholder="Brand (e.g., IKEA, Custom-made)" />
+        </div>
+        <div class="input-group">
+          <label>Estimated Value</label>
+          <input type="number" id="estimatedValue" placeholder="Estimated Value (CHF)" required />
+        </div>
+        <div class="input-group">
+          <label>Product Condition</label>
+          <select id="productCondition" required>
+            <option value="">Loading...</option> <!-- Will be replaced by JavaScript -->
+          </select>
         </div>
         <div class="measurements">
-          <input type="text" placeholder="Weight (kg)" />
-          <input type="text" placeholder="Height (cm)" />
-          <input type="text" placeholder="Depth (cm)" />
-          <input type="text" placeholder="Width (cm)" />
+          <input type="text" id="weight" placeholder="Weight (kg)" />
+          <input type="text" id="height" placeholder="Height (cm)" />
+          <input type="text" id="depth" placeholder="Depth (cm)" />
+          <input type="text" id="width" placeholder="Width (cm)" />
         </div>
 
-        <button class="button">+ Create Trade</button>
+        <button class="button" id="createTradeButton">+ Create Trade</button>
       </div>
-      <div clas="UploadImg">
+
+      <div class="UploadImg">
         <h2>Add your pictures</h2>
         <div class="image-upload">
-          <div class="image-box">📷</div>
-          <div class="image-box">📷</div>
-          <div class="image-box">📷</div>
-          <div class="image-box">➕</div>
+          <input type="file" id="imageUpload" class="hidden-input" accept="image/*" multiple />
+          <div class="image-box" id="addImageBox">➕</div>
         </div>
       </div>
     </div>
   </body>
   <footer>
     <div class="footer">
-      <div>
-        <h3>TRADEROO</h3>
-        <p>We help you find your dream trade</p>
-        <p><strong>Adress</strong><br />Lucerne 6002, Switzerland</p>
-        <p><strong>Contact</strong><br />teamtraderoo@gmail.com</p>
-        <p>Legal status: Sole proprietorship</p>
-      </div>
-      <div>
-        <h3>Information</h3>
-        <a href="#">About</a>
-        <a href="#">Product</a>
-        <a href="#">Blog</a>
-      </div>
-      <div>
-        <h3>Company</h3>
-        <a href="AboutUs.html">Team</a>
-        <a href="AboutUs.html">Out Idea</a>
-        <a href="AboutUs.html">Our story</a>
-      </div>
-      <div>
-        <h3>Contact</h3>
-        <a href="Review.html">Feedback</a>
-        <a href="#">Pricing</a>
-        <a href="#">Resources</a>
-      </div>
+      <h3>TRADEROO</h3>
+      <p>We help you find your dream trade</p>
     </div>
   </footer>
 </html>
