@@ -37,17 +37,14 @@ body {
   justify-content: center;
   margin-bottom: 40px;
 }
+
 .card {
   background: #9bcc7b;
   border-radius: 10px;
   width: 414px;
   padding: 17px;
   text-align: start;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  opacity: 0;
-  transition: opacity 0.1s ease-in-out;
+  transition: transform 0.5s ease-out, opacity 0.5s ease-out;
 }
 .card img {
   width: 100%;
@@ -72,6 +69,7 @@ body {
 .SwipeLeft {
   margin: 0 15px;
   color: #7b492b;
+
   text-decoration: none;
   font-size: 50px;
 }
