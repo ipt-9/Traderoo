@@ -43,6 +43,11 @@ body {
   width: 414px;
   padding: 17px;
   text-align: start;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  opacity: 0;
+  transition: opacity 0.1s ease-in-out;
 }
 .card img {
   width: 100%;
@@ -66,13 +71,13 @@ body {
 }
 .SwipeLeft {
   margin: 0 15px;
-  color: #db5151;
+  color: #7b492b;
   text-decoration: none;
   font-size: 50px;
 }
 .SwipeRight {
   margin: 0 15px;
-  color: #7b492b;
+  color: #db5151;
   text-decoration: none;
   font-size: 50px;
   margin-left: 67%;
