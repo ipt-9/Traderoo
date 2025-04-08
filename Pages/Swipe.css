@@ -4,6 +4,10 @@ body {
   margin: 0;
   padding: 20px;
 }
+a:hover {
+  color: black; /* Hover-Effekt */
+  font-weight: bold; /* Fettgedruckt bei Hover */
+}
 .NavBar {
   text-align: center;
   padding: 10px;
@@ -37,12 +41,14 @@ body {
   justify-content: center;
   margin-bottom: 40px;
 }
+
 .card {
   background: #9bcc7b;
   border-radius: 10px;
   width: 414px;
   padding: 17px;
   text-align: start;
+  transition: transform 0.5s ease-out, opacity 0.5s ease-out;
 }
 .card img {
   width: 100%;
@@ -66,13 +72,14 @@ body {
 }
 .SwipeLeft {
   margin: 0 15px;
-  color: #db5151;
+  color: #7b492b;
+
   text-decoration: none;
   font-size: 50px;
 }
 .SwipeRight {
   margin: 0 15px;
-  color: #7b492b;
+  color: #db5151;
   text-decoration: none;
   font-size: 50px;
   margin-left: 67%;
