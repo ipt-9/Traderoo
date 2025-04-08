@@ -27,7 +27,7 @@ const card = document.querySelector('.card');
     card.style.transform = `translateX(${direction === 'right' ? '1000px' : '-1000px'}) rotate(${direction === 'right' ? '15' : '-15'}deg)`;
     card.style.opacity = 0;
 
-    showMessage(direction === 'right' ? 'Erfolgreich gematched!' : 'Not interested', direction === 'right' ? '#5cb85c' : '#d9534f');
+    showMessage(direction === 'right' ? 'Match <3' : 'Not interested', direction === 'right' ? '#5cb85c' : '#d9534f');
 
     setTimeout(() => {
       card.style.display = 'none';

@@ -4,6 +4,10 @@ body {
   margin: 0;
   padding: 20px;
 }
+a:hover {
+  color: black; /* Hover-Effekt */
+  font-weight: bold; /* Fettgedruckt bei Hover */
+}
 .NavBar {
   text-align: center;
   padding: 10px;
