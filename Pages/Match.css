@@ -1,0 +1,147 @@
+body {
+  font-family: "Manrope", sans-serif;
+  background-color: #f9f9f9;
+  margin: 0;
+  padding: 20px;
+}
+.NavBar {
+  text-align: center;
+  padding: 10px;
+  background-color: #9bcc7b;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+.NavPages {
+  margin: 0 15px;
+  color: #0f4f04;
+  text-decoration: none;
+  font-size: 21px;
+}
+.NavLogo {
+  height: 40px;
+  vertical-align: middle;
+  display: inline-block;
+}
+.CreateTrades {
+  padding-top: 5%;
+}
+.CreateTrades p {
+  font-size: 25px;
+}
+.container {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 80px;
+  margin-bottom: 40px;
+}
+.container label {
+  color: white;
+}
+.trade-info {
+  background: #9bd976;
+  padding: 20px;
+  border-radius: 10px;
+  width: 48%;
+  margin-bottom: 40px;
+}
+.input-group {
+  margin-bottom: 10px;
+}
+.input-group input {
+  width: 96%;
+}
+.input-group textarea {
+  width: 96%;
+}
+input,
+textarea,
+select {
+  width: 100%;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+.measurements {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.measurements input {
+  width: calc(50% - 5px);
+}
+
+.btn {
+  background: #d7f7b6;
+  border: none;
+  padding: 18px 33px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 20px;
+  width: 42%;
+  margin: 20px;
+}
+.Matchingbutton {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.footer {
+  background-color: #a1d88b;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  color: #1f1f1f;
+  color: #0f4f04;
+}
+.footer div {
+  flex: 1;
+  min-width: 200px;
+  margin: 10px;
+}
+.footer h3 {
+  font-size: 16px;
+  font-weight: bold;
+}
+.footer p,
+.footer a {
+  color: #333;
+  text-decoration: none;
+  margin: 5px 0;
+  display: block;
+}
+a:hover {
+  color: black;
+  font-weight: bold;
+}
+
+.image-upload {
+  display: flex;
+  gap: 10px;
+}
+
+.image-box {
+  width: 80px;
+  height: 80px;
+  border: 2px dashed #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  cursor: pointer;
+  position: relative;
+}
+
+.image-preview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.hidden-input {
+  display: none;
+}
