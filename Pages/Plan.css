@@ -25,41 +25,27 @@ a:hover {
   vertical-align: middle;
   display: inline-block;
 }
+.Plan {
+  margin-bottom: -40px;
+}
 .heading {
   font-family: "Manrope", serif;
   color: black;
   padding-top: 5%;
   font-size: 35px;
 }
-.subtitle {
-  font-size: 25px;
-}
-.example-btn2 {
-  background: #9bd976;
-  border: none;
-  padding: 18px 33px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 20px;
-  text-align: right;
-  margin: 20px;
-}
-.AllTradesbutton {
-  margin-top: 15px;
-  margin-bottom: 15px;
-}
-.AllTrades input {
-  width: 50%;
-  padding: 15px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  font-size: 17px;
+
+.title {
+  padding-top: 5%;
 }
 .card-container {
   display: flex;
   gap: 25px;
   justify-content: center;
-  margin-bottom: 40px;
+  margin-top: 9%;
+}
+.description {
+  width: 40%;
 }
 .card {
   background: #9bcc7b;
@@ -68,25 +54,30 @@ a:hover {
   padding: 17px;
   text-align: center;
 }
-.card img {
-  width: 100%;
-  border-radius: 5px;
-}
-.match-button {
-  background: #a0e060;
+.upgrade-button {
+  background: #000000;
+  color: #e7f5ff;
   border: none;
-  padding: 11px 25px;
+  padding: 14px 85px;
   border-radius: 5px;
   cursor: pointer;
 }
 .card h4 {
   font-size: 22px;
   color: white;
+  margin-top: -4px;
+}
+.card h3 {
+  font-size: 30px;
+  color: white;
+  margin-top: -10px;
 }
 .card p {
   color: #484646;
 }
-
+.card ul {
+  color: #e7f5ff;
+}
 .footer {
   background-color: #a1d88b;
   padding: 20px;
@@ -94,6 +85,7 @@ a:hover {
   justify-content: space-between;
   flex-wrap: wrap;
   color: #0f4f04;
+  margin-top: 253px;
 }
 .footer div {
   flex: 1;
