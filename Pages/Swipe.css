@@ -35,26 +35,34 @@ a:hover {
   font-size: 25px;
 }
 .Explaination {
-  margin-left: -32%;
+  margin-left: -161%;
   padding-right: 2%;
 }
 .Steps {
   font-size: 22px;
 }
 .card-container {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 40px;
+  position: relative;
+  width: 414px;
+  margin: 0 auto;
+  height: auto;
+  margin-bottom: 465px;
 }
 
 .card {
+  position: absolute;
+  top: 0;
+  left: 199px;
+  width: 100%;
   background: #9bcc7b;
   border-radius: 10px;
-  width: 414px;
   padding: 17px;
   text-align: start;
   transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+  z-index: 0;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
+
 .card img {
   width: 100%;
   border-radius: 5px;
@@ -72,24 +80,31 @@ a:hover {
   margin-top: 5%;
   margin-bottom: 3%;
 }
+
 .card p {
   color: #484646;
 }
+
 .SwipeLeft {
   margin: 0 15px;
   color: #7b492b;
-
   text-decoration: none;
   font-size: 50px;
 }
+
 .SwipeRight {
   margin: 0 15px;
   color: #db5151;
   text-decoration: none;
   font-size: 50px;
-  margin-left: 67%;
+  float: right;
 }
 .footer {
+  position: absolute;
+  bottom: -380px;
+  left: 0;
+  width: 100%;
+  z-index: 0;
   background-color: #a1d88b;
   padding: 20px;
   display: flex;

@@ -1,72 +1,90 @@
-const card = document.querySelector('.card');
-  const swipeLeftBtn = document.querySelector('.SwipeRight'); // ist rechtes Icon (X)
-  const swipeRightBtn = document.querySelector('.SwipeLeft'); // ist linkes Icon (Herz)
+const showMessage = (message, color) => {
+  const msg = document.createElement('div');
+  msg.textContent = message;
+  msg.style.position = 'fixed';
+  msg.style.top = '20px';
+  msg.style.left = '50%';
+  msg.style.transform = 'translateX(-50%)';
+  msg.style.backgroundColor = color;
+  msg.style.color = 'white';
+  msg.style.padding = '10px 20px';
+  msg.style.borderRadius = '10px';
+  msg.style.fontSize = '20px';
+  msg.style.zIndex = 999;
+  document.body.appendChild(msg);
 
-  const showMessage = (message, color) => {
-    const msg = document.createElement('div');
-    msg.textContent = message;
-    msg.style.position = 'fixed';
-    msg.style.top = '20px';
-    msg.style.left = '50%';
-    msg.style.transform = 'translateX(-50%)';
-    msg.style.backgroundColor = color;
-    msg.style.color = 'white';
-    msg.style.padding = '10px 20px';
-    msg.style.borderRadius = '10px';
-    msg.style.fontSize = '20px';
-    msg.style.zIndex = 999;
-    document.body.appendChild(msg);
+  setTimeout(() => msg.remove(), 2000);
+};
 
-    setTimeout(() => {
-      msg.remove();
-    }, 2000);
-  };
+const originalCardsHTML = [];
 
-  const swipeCard = (direction) => {
-    card.style.transition = 'transform 0.5s ease-out, opacity 0.5s ease-out';
-    card.style.transform = `translateX(${direction === 'right' ? '1000px' : '-1000px'}) rotate(${direction === 'right' ? '15' : '-15'}deg)`;
-    card.style.opacity = 0;
-
-    showMessage(direction === 'right' ? 'Match <3' : 'Not interested', direction === 'right' ? '#5cb85c' : '#d9534f');
-
-    setTimeout(() => {
-      card.style.display = 'none';
-    }, 600);
-  };
-
-  swipeRightBtn.addEventListener('click', () => swipeCard('left'));
-  swipeLeftBtn.addEventListener('click', () => swipeCard('right'));
-
-  // Swipe detection
-  let startX = 0;
-  let isDragging = false;
-
-  card.addEventListener('mousedown', (e) => {
-    isDragging = true;
-    startX = e.clientX;
+document.addEventListener('DOMContentLoaded', () => {
+  // Save original cards
+  document.querySelectorAll('.card').forEach(card => {
+    originalCardsHTML.push(card.outerHTML);
   });
+});
 
-  card.addEventListener('mouseup', (e) => {
-    if (!isDragging) return;
-    isDragging = false;
-    const diffX = e.clientX - startX;
-    if (diffX > 100) {
-      swipeCard('right');
-    } else if (diffX < -100) {
-      swipeCard('left');
-    }
+const checkIfEmpty = () => {
+  const cards = document.querySelectorAll('.card-container .card');
+  if (cards.length === 0) {
+    showReloadButton();
+  }
+};
+
+const showReloadButton = () => {
+  if (document.getElementById('reload-button')) return;
+
+  const reloadBtn = document.createElement('button');
+  reloadBtn.id = 'reload-button';
+  reloadBtn.textContent = 'Reload Cards';
+  reloadBtn.style.position = 'fixed';
+  reloadBtn.style.bottom = '100px';
+  reloadBtn.style.left = '50%';
+  reloadBtn.style.transform = 'translateX(-50%)';
+  reloadBtn.style.padding = '15px 30px';
+  reloadBtn.style.fontSize = '18px';
+  reloadBtn.style.border = 'none';
+  reloadBtn.style.borderRadius = '8px';
+  reloadBtn.style.backgroundColor = '#5cb85c';
+  reloadBtn.style.color = 'white';
+  reloadBtn.style.cursor = 'pointer';
+  reloadBtn.style.zIndex = 1000;
+
+  document.body.appendChild(reloadBtn);
+
+  reloadBtn.addEventListener('click', () => {
+    const container = document.querySelector('.card-container');
+    originalCardsHTML.forEach(html => {
+      const temp = document.createElement('div');
+      temp.innerHTML = html.trim();
+      container.appendChild(temp.firstChild);
+    });
+    reloadBtn.remove();
   });
+};
 
-  card.addEventListener('touchstart', (e) => {
-    startX = e.touches[0].clientX;
-  });
+const swipeCard = (direction) => {
+  const cards = document.querySelectorAll('.card-container .card');
+  const topCard = cards[cards.length - 1];
+  if (!topCard) return;
 
-  card.addEventListener('touchend', (e) => {
-    const endX = e.changedTouches[0].clientX;
-    const diffX = endX - startX;
-    if (diffX > 100) {
-      swipeCard('right');
-    } else if (diffX < -100) {
-      swipeCard('left');
-    }
+  topCard.style.transition = 'transform 0.5s ease-out, opacity 0.5s ease-out';
+  topCard.style.transform = `translateX(${direction === 'right' ? '1000px' : '-1000px'}) rotate(${direction === 'right' ? '15' : '-15'}deg)`;
+  topCard.style.opacity = 0;
+
+  showMessage(
+    direction === 'right' ? 'Match <3' : 'Not interested',
+    direction === 'right' ? '#5cb85c' : '#d9534f'
+  );
+
+  setTimeout(() => {
+    topCard.remove();
+    checkIfEmpty();
+  }, 600);
+};
+
+document.addEventListener('click', (e) => {
+  if (e.target.closest('.SwipeRight')) swipeCard('right');
+  if (e.target.closest('.SwipeLeft')) swipeCard('left');
 });
