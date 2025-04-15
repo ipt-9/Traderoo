@@ -14,7 +14,7 @@ window.addEventListener('DOMContentLoaded', () => {
         const card = document.createElement('div');
         document.querySelector(".heading").innerText = product.Title;
         document.querySelector(".pictures").innerHTML = `
-        <img src="../Backend/uploads/${product.Pictures}" alt="${product.Title}" />;
+        <img src="../Backend/uploads/${product.Pictures}" alt="${product.Title}" style = width:75% />
         `
         document.querySelector(".profile-name").innerText = product.Username;
         document.querySelector(".description").innerText = product.Description;
@@ -35,5 +35,6 @@ window.addEventListener('DOMContentLoaded', () => {
         console.error("Fehler beim Laden:", err);
         document.querySelector(".heading").innerText = "Fehler beim Laden des Produkts";
       });
+      
   });
   
