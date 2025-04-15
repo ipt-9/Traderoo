@@ -24,6 +24,11 @@ body {
     font-size: 35px;
      
     }
+.pictures{
+    max-width: 105%;
+    height: auto;
+}
+
 .col{
 flex: 0 0 33%; 
 margin-bottom: 3%;

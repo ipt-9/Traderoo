@@ -96,6 +96,35 @@ router.post("/create", upload.array("images", 5), (req, res) => {
     });
 });
 
+router.get("/all", (req, res) => {
+    const query = `
+        SELECT *, Users.Username AS username
+        FROM Products
+        JOIN Users ON Products.fk_UserID = Users.id
+    `;
+
+    db.query(query, (err, results) => {
+        if (err) {
+            return res.status(500).json({ error: 'Datenbankfehler' });
+        }
+        res.json(results);
+    });
+});
+
+router.get("/:id", (req, res) => {
+  const productID = req.params.productID;
+  const query = `
+    SELECT *, Users.Username AS username
+        FROM Products
+        JOIN Users ON Products.fk_UserID = Users.id
+    WHERE Products.productID = 3
+  `;
+  db.query(query, [productID], (err, results) => {
+    if (err) return res.status(500).json({ error: "Fehler beim Abrufen" });
+    res.json(results[0]); // Nur ein Produkt erwartet
+  });
+});
+
 
 
 module.exports = router;
