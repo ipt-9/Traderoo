@@ -112,12 +112,12 @@ router.get("/all", (req, res) => {
 });
 
 router.get("/:id", (req, res) => {
-  const productID = req.params.productID;
+  const productID = req.params.id;
   const query = `
     SELECT *, Users.Username AS username
         FROM Products
         JOIN Users ON Products.fk_UserID = Users.id
-    WHERE Products.productID = 3
+    WHERE Products.productID = ?
   `;
   db.query(query, [productID], (err, results) => {
     if (err) return res.status(500).json({ error: "Fehler beim Abrufen" });
