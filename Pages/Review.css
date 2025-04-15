@@ -4,42 +4,26 @@ body {
   margin: 0;
   padding: 20px;
 }
+a:hover {
+  color: black;
+  font-weight: bold;
+}
 .NavBar {
   text-align: center;
   padding: 10px;
-  background-color: #fff;
+  background-color: #9bcc7b;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
 }
 .NavPages {
   margin: 0 15px;
-  color: gray;
+  color: #0f4f04;
   text-decoration: none;
   font-size: 21px;
 }
-.footer {
-  background-color: #a1d88b;
-  padding: 20px;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  color: #1f1f1f;
-  margin-top: 253px;
-}
-.footer div {
-  flex: 1;
-  min-width: 200px;
-  margin: 10px;
-}
-.footer h3 {
-  font-size: 16px;
-  font-weight: bold;
-}
-.footer p,
-.footer a {
-  color: #333;
-  text-decoration: none;
-  margin: 5px 0;
-  display: block;
+.NavLogo {
+  height: 40px;
+  vertical-align: middle;
+  display: inline-block;
 }
 .heading {
   font-family: "Manrope", serif;
@@ -157,4 +141,29 @@ textarea {
 
 .create-review-btn:hover {
   background-color: #66b357;
+}
+.footer {
+  background-color: #a1d88b;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  color: #0f4f04;
+  margin-top: 253px;
+}
+.footer div {
+  flex: 1;
+  min-width: 200px;
+  margin: 10px;
+}
+.footer h3 {
+  font-size: 16px;
+  font-weight: bold;
+}
+.footer p,
+.footer a {
+  color: #333;
+  text-decoration: none;
+  margin: 5px 0;
+  display: block;
 }

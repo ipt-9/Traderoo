@@ -70,32 +70,20 @@ select {
   width: calc(50% - 5px);
 }
 
-.button {
-  background: #b0f484;
+.btn {
+  background: #d7f7b6;
   border: none;
-  padding: 10px;
+  padding: 18px 33px;
   border-radius: 5px;
   cursor: pointer;
-  width: 100%;
-  margin-top: 10px;
-  color: #696363;
+  font-size: 20px;
+  width: 42%;
+  margin: 20px;
 }
-.UploadImg {
-  margin-left: 40px;
-}
-.image-upload {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
-}
-.image-box {
-  background: #888;
-  width: 150px;
-  height: 150px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 5px;
+.Matchingbutton {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  text-align: center;
 }
 
 .footer {

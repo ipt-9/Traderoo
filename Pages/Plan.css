@@ -25,92 +25,67 @@ a:hover {
   vertical-align: middle;
   display: inline-block;
 }
+.Plan {
+  margin-bottom: -40px;
+}
 .heading {
   font-family: "Manrope", serif;
   color: black;
   padding-top: 5%;
   font-size: 35px;
 }
-.subtitle {
-  font-size: 25px;
-}
-.Explaination {
-  margin-left: -161%;
-  padding-right: 2%;
-}
-.Steps {
-  font-size: 22px;
+
+.title {
+  padding-top: 5%;
 }
 .card-container {
-  position: relative;
-  width: 414px;
-  margin: 0 auto;
-  height: auto;
-  margin-bottom: 465px;
+  display: flex;
+  gap: 25px;
+  justify-content: center;
+  margin-top: 9%;
 }
-
+.description {
+  width: 40%;
+}
 .card {
-  position: absolute;
-  top: 0;
-  left: 199px;
-  width: 100%;
   background: #9bcc7b;
   border-radius: 10px;
+  width: 200px;
   padding: 17px;
-  text-align: start;
-  transition: transform 0.5s ease-out, opacity 0.5s ease-out;
-  z-index: 0;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
-
-.card img {
-  width: 100%;
-  border-radius: 5px;
-}
-.match-button {
-  background: #a0e060;
+.upgrade-button {
+  background: #000000;
+  color: #e7f5ff;
   border: none;
-  padding: 11px 25px;
+  padding: 14px 85px;
   border-radius: 5px;
   cursor: pointer;
 }
 .card h4 {
-  font-size: 32px;
+  font-size: 22px;
   color: white;
-  margin-top: 5%;
-  margin-bottom: 3%;
+  margin-top: -4px;
 }
-
+.card h3 {
+  font-size: 30px;
+  color: white;
+  margin-top: -10px;
+}
 .card p {
   color: #484646;
 }
-
-.SwipeLeft {
-  margin: 0 15px;
-  color: #7b492b;
-  text-decoration: none;
-  font-size: 50px;
-}
-
-.SwipeRight {
-  margin: 0 15px;
-  color: #db5151;
-  text-decoration: none;
-  font-size: 50px;
-  float: right;
+.card ul {
+  color: #e7f5ff;
 }
 .footer {
-  position: absolute;
-  bottom: -380px;
-  left: 0;
-  width: 100%;
-  z-index: 0;
   background-color: #a1d88b;
   padding: 20px;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   color: #0f4f04;
+  margin-top: 253px;
 }
 .footer div {
   flex: 1;
