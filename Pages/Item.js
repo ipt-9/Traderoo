@@ -14,7 +14,7 @@ window.addEventListener('DOMContentLoaded', () => {
         const card = document.createElement('div');
         document.querySelector(".heading").innerText = product.Title;
         document.querySelector(".pictures").innerHTML = `
-        <img src="../Backend/uploads/${product.Pictures}" alt="${product.Title}" style = width:75% />
+        <img src="../Backend/uploads/${product.Pictures}" alt="${product.Title}" style = width:75% />;
         `
         document.querySelector(".profile-name").innerText = product.Username;
         document.querySelector(".description").innerText = product.Description;
@@ -28,8 +28,11 @@ window.addEventListener('DOMContentLoaded', () => {
           <div>Width: ${product.Width}cm</div>
           <div>Depth: ${product.Depth}cm</div>
         `;
-  
-        document.querySelector(".match-button").innerText = `Match now with ${product.Username}`;
+        const matchContainer = document.querySelector(".match-button");
+
+        matchContainer.innerHTML = `<a href="Match.html?id=${product.productID}">
+            <button class="match-button">Match now with ${product.Username}</button>
+        </a>`;
       })
       .catch(err => {
         console.error("Fehler beim Laden:", err);
