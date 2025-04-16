@@ -87,10 +87,10 @@ a:hover {
   font-size: 14px;
 }
 .card-container {
-  display: flex;
-  gap: 25px;
-  justify-content: center;
-  margin-bottom: 40px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 4 gleich breite Spalten */
+  gap: 20px; /* Abstand zwischen den Cards */
+  padding: 20px;
 }
 .card {
   background: #9bcc7b;

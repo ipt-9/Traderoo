@@ -1,3 +1,6 @@
+let allProducts = [];
+let currentIndex = 0;
+
 const showMessage = (message, color) => {
   const msg = document.createElement('div');
   msg.textContent = message;
@@ -16,25 +19,62 @@ const showMessage = (message, color) => {
   setTimeout(() => msg.remove(), 2000);
 };
 
-const originalCardsHTML = [];
+const loadProducts = async () => {
+  const res = await fetch('http://localhost:5000/api/products/all');
+  const products = await res.json();
 
-document.addEventListener('DOMContentLoaded', () => {
-  // Save original cards
-  document.querySelectorAll('.card').forEach(card => {
-    originalCardsHTML.push(card.outerHTML);
-  });
-});
+  // Zufällige 4 Produkte wählen
+  allProducts = products.sort(() => 0.5 - Math.random()).slice(0, 4);
+  currentIndex = 0;
+  renderCard();
+};
 
-const checkIfEmpty = () => {
-  const cards = document.querySelectorAll('.card-container .card');
-  if (cards.length === 0) {
+const renderCard = () => {
+  const container = document.querySelector('.card-container');
+  container.innerHTML = '';
+
+  if (currentIndex < allProducts.length) {
+    const product = allProducts[currentIndex];
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `
+      <img src="../Backend/uploads/${product.Pictures}" alt="${product.Title}" />
+      <h4>${product.Title}</h4>
+      <p>Posted by <strong>${product.username}</strong></p>
+      <p>${product.Description}</p>
+      <a class="SwipeLeft"><i class="fa-solid fa-xmark"></i></a>
+      <a class="SwipeRight" data-id="${product.productID}"><i class="fa-solid fa-heart"></i></a>
+    `;
+    container.appendChild(card);
+  } else {
     showReloadButton();
   }
+};
+
+const swipeCard = (direction) => {
+  const card = document.querySelector('.card-container .card');
+  if (!card) return;
+
+  card.style.transition = 'transform 0.5s ease-out, opacity 0.5s ease-out';
+  card.style.transform = `translateX(${direction === 'right' ? '1000px' : '-1000px'}) rotate(${direction === 'right' ? '15' : '-15'}deg)`;
+  card.style.opacity = 0;
+
+  showMessage(
+    direction === 'right' ? 'Match <3' : 'Not interested',
+    direction === 'right' ? '#5cb85c' : '#d9534f'
+  );
+
+  setTimeout(() => {
+    card.remove();
+    currentIndex++;
+    renderCard();
+  }, 600);
 };
 
 const showReloadButton = () => {
   if (document.getElementById('reload-button')) return;
 
+  const container = document.querySelector('.card-container');
   const reloadBtn = document.createElement('button');
   reloadBtn.id = 'reload-button';
   reloadBtn.textContent = 'Reload Cards';
@@ -51,40 +91,23 @@ const showReloadButton = () => {
   reloadBtn.style.cursor = 'pointer';
   reloadBtn.style.zIndex = 1000;
 
-  document.body.appendChild(reloadBtn);
-
   reloadBtn.addEventListener('click', () => {
-    const container = document.querySelector('.card-container');
-    originalCardsHTML.forEach(html => {
-      const temp = document.createElement('div');
-      temp.innerHTML = html.trim();
-      container.appendChild(temp.firstChild);
-    });
     reloadBtn.remove();
+    loadProducts();
   });
+
+  container.appendChild(reloadBtn);
 };
 
-const swipeCard = (direction) => {
-  const cards = document.querySelectorAll('.card-container .card');
-  const topCard = cards[cards.length - 1];
-  if (!topCard) return;
-
-  topCard.style.transition = 'transform 0.5s ease-out, opacity 0.5s ease-out';
-  topCard.style.transform = `translateX(${direction === 'right' ? '1000px' : '-1000px'}) rotate(${direction === 'right' ? '15' : '-15'}deg)`;
-  topCard.style.opacity = 0;
-
-  showMessage(
-    direction === 'right' ? 'Match <3' : 'Not interested',
-    direction === 'right' ? '#5cb85c' : '#d9534f'
-  );
-
-  setTimeout(() => {
-    topCard.remove();
-    checkIfEmpty();
-  }, 600);
-};
-
+// Event delegation for swipe buttons
 document.addEventListener('click', (e) => {
-  if (e.target.closest('.SwipeRight')) swipeCard('right');
   if (e.target.closest('.SwipeLeft')) swipeCard('left');
+  if (e.target.closest('.SwipeRight')) {
+    const productID = e.target.closest('.SwipeRight').dataset.id;
+    window.location.href = `Item.html?id=${productID}`;
+  }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  loadProducts();
 });
