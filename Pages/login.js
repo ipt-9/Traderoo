@@ -34,6 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 localStorage.setItem("userToken", data.token);
                 localStorage.setItem("loggedInUser", data.user.Username );
+                localStorage.setItem("loggedInUserID", data.user.id );
                 
                 console.log("Token from response:", data.token);
 

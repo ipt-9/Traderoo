@@ -40,7 +40,8 @@ a:hover {
 .col {
   flex: 0 0 33%;
   margin-bottom: 3%;
-  margin-right: 50px;
+  margin-right: auto;
+  margin-top: 15%;
 }
 ul {
   display: flex;
@@ -54,18 +55,20 @@ li {
   flex: 0 0 20%;
   display: inline;
 }
+.Itemdetail{
+  display: flex;
+  flex-wrap: wrap;
+}
 .IteImg {
   font-family: "Manrope", serif;
   color: black;
-  display: flex;
-  flex-wrap: wrap;
   max-width: 1600px;
   margin-left: auto;
-  margin-right: auto;
+  
   margin-bottom: 4%;
-  justify-content: center;
   margin-top: 150px;
 }
+
 .table {
   max-width: 105%;
   height: auto;

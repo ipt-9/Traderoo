@@ -35,43 +35,35 @@
     <center>
       <div class="CreateTrades">
         <h1>Matching</h1>
-        <p>Add the match information here!</p>
       </div>
     </center>
-
+    <div id="matching" class="card-container">
     <div class="container">
       <div class="trade-info">
         <div class="input-group">
-          <label>Trading Title</label>
-          <input type="text" id="title" placeholder="ex. Ikea table" required />
+          <p class="title" ></p>
         </div>
         <div class="input-group">
-          <label>Your Username</label>
-          <input type="text" id="title" placeholder="testuser" required />
+          <div class="tradeoffer"></div>
         </div>
         <div class="input-group">
-          <label>Your Email</label>
-          <textarea
-            id="description"
-            placeholder="example@gmail.com"
-            required
-          ></textarea>
+          <p class="trade"></p>
         </div>
         <div class="input-group">
-          <label> Username of your trading partner</label>
-          <input type="text" id="brand" placeholder="testuser" />
+          <p class="tradeuser"></p>
         </div>
         <div class="input-group">
-          <label> Email of your trading partner</label>
-          <input type="text" id="brand" placeholder="example@gmail.com" />
+          <p class="tradeemail"></p>
         </div>
         <div class="Matchingbutton">
-          <a href="Item.html"><button class="btn">Cancel</button></a>
+          <a href="AllTrades.html"><button class="btn">Cancel</button></a>
 
-          <button class="btn">Accept</button>
+          <button class="btn" id="accept-button">Accept</button>
         </div>
+    </div>
       </div>
     </div>
+    <script src="Match.js"></script>
   </body>
   <footer>
     <div class="footer">

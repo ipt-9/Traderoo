@@ -27,4 +27,28 @@ router.get('/profile', (req, res) => {
     }
 });
 
+router.get("/user/:id/items", (req, res) => {
+    const userID = req.params.id;
+    const query = `SELECT productID, Title FROM Products WHERE fk_UserID = ?`;
+  
+    db.query(query, [userID], (err, results) => {
+      if (err) return res.status(500).json({ error: "Fehler beim Laden" });
+      res.json(results);
+    });
+  });
+
+  router.get("/:id", (req, res) => {
+    const productID = req.params.id;
+    const query = `
+      SELECT *, Users.Username AS username, Users.Email AS email
+FROM Products
+JOIN Users ON Products.fk_UserID = Users.id
+WHERE Products.productID = ?
+    `;
+    db.query(query, [productID], (err, results) => {
+      if (err) return res.status(500).json({ error: "Fehler beim Abrufen" });
+      res.json(results[0]); // Nur ein Produkt erwartet
+    });
+  });
+
 module.exports = router;
