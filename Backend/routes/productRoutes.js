@@ -141,7 +141,7 @@ WHERE Products.productID = ?
 
   router.get("/users/:id/items", (req, res) => {
     const userID = req.params.id;
-    const query = `SELECT productID, Title FROM Products WHERE fk_UserID = ?`;
+    const query = `SELECT * FROM Products WHERE fk_UserID = ?`;
   
     db.query(query, [userID], (err, results) => {
       if (err) return res.status(500).json({ error: "Fehler beim Laden" });
