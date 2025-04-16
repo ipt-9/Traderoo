@@ -142,12 +142,13 @@ li {
 }
 .match-button {
   background: #90d270;
-  padding: 15px;
+  padding: 3px 15px;
   border-radius: 25px;
   text-align: center;
   margin-top: 15px;
   font-weight: bold;
   cursor: pointer;
+  font-size: 17px;
 }
 .footer {
   background-color: #a1d88b;
